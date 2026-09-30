@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f8fc" />
+    <title>Papertrail — Chat with your documents</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="/" aria-label="Papertrail home">
+          <span class="brand-mark">P</span>
+          <span>papertrail<span class="brand-dot">.</span></span>
+        </a>
+        <div class="workspace-label">WORKSPACE</div>
+        <button class="nav-item active" type="button">
+          <span class="nav-icon">▤</span>
+          <span>Document chat</span>
+          <span class="nav-count">01</span>
+        </button>
+        <div class="sidebar-bottom">
+          <div class="local-card">
+            <span class="status-dot"></span>
+            <div><strong>Private workspace</strong><small>Runs locally on your machine</small></div>
+          </div>
+          <div class="profile">
+            <span class="avatar">WS</span>
+            <div><strong>Workshop space</strong><small>Local session</small></div>
+            <span class="profile-menu">···</span>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div class="breadcrumbs"><span>Workspace</span><span class="crumb-sep">/</span><strong>Document chat</strong></div>
+          <div class="topbar-right"><span class="local-pill"><span></span> Local &amp; private</span><button class="help-button" type="button" title="About this workshop">?</button></div>
+        </header>
+        <div class="content-grid">
+          <section class="chat-area">
+            <div class="chat-heading">
+              <div class="eyebrow"><span class="sparkle">✳</span> YOUR DOCUMENT ASSISTANT</div>
+              <h1>Good ideas start<br />with a <span>good question.</span></h1>
+              <p>Ask anything about your documents. Answers are grounded in the files you share.</p>
+            </div>
+            <div class="conversation" id="conversation" aria-live="polite">
+              <div class="welcome-card" id="welcome-card">
+                <div class="welcome-icon">✳</div>
+                <div><strong>Your reading room is ready.</strong><p>Upload a document, then ask a question to get started.</p></div>
+                <span class="welcome-arrow">↗</span>
+              </div>
+            </div>
+            <form class="composer" id="chat-form">
+              <label class="sr-only" for="question">Ask a question about your documents</label>
+              <textarea id="question" rows="1" maxlength="4000" placeholder="Ask a question about your documents…" disabled></textarea>
+              <div class="composer-footer">
+                <span class="composer-hint"><span class="keyboard-key">↵</span> to send <span class="hint-divider">·</span> Answers use your selected sources</span>
+                <button class="send-button" type="submit" disabled aria-label="Send message">↑</button>
+              </div>
+            </form>
+            <div class="privacy-note"><span>◈</span> Your documents stay on this device and are processed by your local Ollama models.</div>
+          </section>
+
+          <aside class="sources-panel">
+            <div class="panel-heading"><div><span class="eyebrow">YOUR LIBRARY</span><h2>Sources <span id="source-count">0</span></h2></div><button class="icon-button" id="refresh-button" type="button" aria-label="Refresh documents" title="Refresh">↻</button></div>
+            <p class="panel-description">Choose which documents your assistant can reference.</p>
+            <label class="drop-zone" id="drop-zone" for="file-input">
+              <span class="upload-icon">↑</span>
+              <strong>Drop files here or <span>browse</span></strong>
+              <small>PDF or DOCX · up to 20 MB each</small>
+              <input id="file-input" type="file" accept=".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document" multiple />
+            </label>
+            <div class="upload-status" id="upload-status" role="status"></div>
+            <div class="source-list-heading"><span>UPLOADED FILES</span><button id="select-all" type="button">Select all</button></div>
+            <div class="source-list" id="source-list"><div class="empty-sources">Your uploaded files will appear here.</div></div>
+            <div class="retrieval-card">
+              <div class="retrieval-icon">⌕</div>
+              <div><strong>How answers are found</strong><p>We find the most relevant passages in your selected files, then ask your local AI to answer from those sources.</p></div>
+            </div>
+            <div class="model-status"><span class="status-dot"></span><span>Powered by <strong>Ollama</strong></span><span class="model-separator">·</span><span>Local models</span></div>
+          </aside>
+        </div>
+      </main>
+    </div>
+    <script src="/static/app.js?v=2" defer></script>
+  </body>
+</html>
